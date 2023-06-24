@@ -1,0 +1,86 @@
+
+.gas-container {
+    background-color: #202124;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  h1 {
+    color: var(--light, #f1f1f1);
+    font-size: 2.25rem;
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 2rem;
+  }
+  
+  .options-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .option-square {
+    width: 15rem;
+    height: 15rem;
+    background-color: var(--gray, #8c8c8c);
+    color: var(--light, #f1f1f1);
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+    cursor: pointer;
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .option-square.selected {
+    background-color: var(--purple, #9142ff);
+  }
+  
+  .next-button {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 24px;
+    background-color: var(--purple, #9142ff);
+    color: var(--light, #f1f1f1);
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fade-in 0.5s forwards;
+  }
+  
+  .next-button:hover {
+    background-color: var(--purple, #8b30ff);
+  }
+  
+  .next-button:disabled {
+    background-color: var(--gray, #8c8c8c);
+    cursor: not-allowed;
+  }
+  
+  .next-button:not(:disabled) {
+    animation-delay: 0.5s;
+  }
+  
+  /* Gas.css */
+  
