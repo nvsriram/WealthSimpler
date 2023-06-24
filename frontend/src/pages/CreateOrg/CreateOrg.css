@@ -1,12 +1,3 @@
-.create-org-container {
-  background-color: #202124;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
 h1 {
   color: var(--light, #f1f1f1);
   font-size: 2.25rem;
@@ -60,4 +51,22 @@ h1 {
 .create-org-button.disabled {
   background-color: var(--gray, #8c8c8c);
   cursor: not-allowed;
+}
+
+input {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--gray, #8c8c8c);
+  border-radius: 4px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Adjust the opacity value (0.8) as desired */
+}
+
+input[type="tel"] {
+  width: 10rem;
 }

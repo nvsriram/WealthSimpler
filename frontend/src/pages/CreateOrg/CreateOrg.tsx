@@ -19,9 +19,10 @@ const CreateOrg = () => {
   };
 
   return (
-    <div className="create-org-container">
+    <>
       <h1>New Organization</h1>
-      <div className="scroll-view">
+      <input type="text" />
+      {/* <div className="scroll-view">
         <div
           className={`option ${
             selectedOption === "Option 1" ? "selected" : ""
@@ -46,7 +47,7 @@ const CreateOrg = () => {
         >
           Option 3
         </div>
-      </div>
+      </div> */}
       <button
         className={`create-org-button ${
           selectedOption === "" ? "disabled" : ""
@@ -56,7 +57,7 @@ const CreateOrg = () => {
       >
         Create
       </button>
-    </div>
+    </>
   );
 };
 

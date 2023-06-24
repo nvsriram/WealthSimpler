@@ -21,7 +21,7 @@ body {
   gap: 2rem;
 }
 
-.container {
+.main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,34 +31,34 @@ body {
 }
 
 @media (min-width: 640px) {
-  .container,
+  .main-container,
   .navbar {
     max-width: 640px;
   }
 }
 
 @media (min-width: 640px) {
-  .container,
+  .main-container,
   .navbar {
     max-width: 640px;
   }
 }
 
 @media (min-width: 768px) {
-  .container,
+  .main-container,
   .navbar {
     max-width: 768px;
   }
 }
 
 @media (min-width: 1024px) {
-  .container,
+  .main-container,
   .navbar {
     max-width: 1024px;
   }
 }
 @media (min-width: 1280px) {
-  .container,
+  .main-container,
   .navbar {
     max-width: 1280px;
   }
@@ -88,5 +88,4 @@ h1 {
   line-height: 2.25rem; /* 36px */
   font-family: Lato, sans-serif;
   font-weight: 700;
-  margin: 0;
 }
