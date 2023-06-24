@@ -1,23 +1,26 @@
 import { useState } from "react";
+
+import { Route, Routes } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+
+import Login from "./Login";
+import Users from "./Users";
 import "./styles.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
 
   return (
-    <div class="container">
-      <h1>WealthSimpler</h1>
-      <h1>Organization Name</h1>
-      <label className="balance-label">Current Balance:</label>
-      <p className="balance">123456.00</p>
-      <div className="button-container">
-        <button className="button">Send</button>
-        <button className="button">Receive</button>
-      </div>
-      <br />
-      <label className="strategy-label">Automatic Strategy:</label>
-      <br />
-      <label className="strategy-label">Strategy Threshold:</label>
+    <div className="App">
+      {isAuthenticated ? (
+        <div>
+          <Routes>
+            <Route path="/" element={<Users />}></Route>
+          </Routes>
+        </div>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }
