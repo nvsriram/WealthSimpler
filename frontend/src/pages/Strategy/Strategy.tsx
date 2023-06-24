@@ -1,6 +1,4 @@
-// Strategy.tsx
-
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Strategy.css";
 
 const Strategy = () => {
