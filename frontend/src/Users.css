@@ -1,0 +1,97 @@
+/* Users.css */
+
+.container {
+    background-color: #202124;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  h1 {
+    color: var(--light, #f1f1f1);
+    font-size: 2.25rem;
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 2rem;
+  }
+  
+  .scroll-view {
+    width: 20rem;
+    max-height: 10rem;
+    overflow-y: scroll;
+    padding: 1rem;
+    border: 1px solid var(--gray, #8c8c8c);
+    border-radius: 4px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--gray, #8c8c8c);
+    color: var(--light, #f1f1f1);
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .add-user-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .add-user-container input {
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .add-user-container input[type="tel"] {
+    width: 10rem;
+  }
+  
+  .add-user-container button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--purple, #9142ff);
+    color: var(--light, #f1f1f1);
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 24px;
+    background-color: var(--purple, #9142ff);
+    color: var(--light, #f1f1f1);
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .submit-button.disabled {
+    background-color: var(--gray, #8c8c8c);
+    cursor: not-allowed;
+  }
+  
