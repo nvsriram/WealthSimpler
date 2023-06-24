@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./Gas.css";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 const Gas = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -37,9 +39,13 @@ const Gas = () => {
         </div>
       </div>
       {selectedOption !== "" && (
-        <button className="next-button" onClick={handleNext}>
+        <AwesomeButton
+          type="primary"
+          className="next-button"
+          onPress={handleNext}
+        >
           Next
-        </button>
+        </AwesomeButton>
       )}
     </div>
   );
