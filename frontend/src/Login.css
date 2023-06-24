@@ -48,7 +48,25 @@
   }
   
   .login-button {
-    background-color: var(--purple, #9142FF);
+    display: flex;
+    width: 11.75rem;
+    height: 3.375rem;
+    padding: 0.73438rem 0rem 0.82813rem 0rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 24px;
+    background: var(--purple, #9142FF);
+    box-shadow: 2px 2px 2px 0px #9D6AE3 inset,
+      -2px -2px 2px 0px rgba(61, 16, 124, 0.64) inset,
+      8px 8px 16px 0px rgba(4, 4, 4, 0.80),
+      -8px -8px 12px 0px rgba(39, 39, 44, 0.48);
+    color: var(--light, #F1F1F1);
+    font-size: 2rem;
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    line-height: 120%;
+    color: var(--white, #FFF);
   }
   
   .signup-button {
