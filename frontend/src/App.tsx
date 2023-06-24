@@ -1,17 +1,14 @@
-import { useState } from "react";
-
 import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-
-import Login from "./Login";
-import Users from "./Users";
+import Login from "./pages/Login/Login";
+import Users from "./pages/Users/Users";
 import "./styles.css";
 
-function App() {
+const App = () => {
   const { user, loginWithRedirect, isAuthenticated } = useAuth0();
 
   return (
-    <div className="App">
+    <div>
       {isAuthenticated ? (
         <div>
           <Routes>
@@ -23,6 +20,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;

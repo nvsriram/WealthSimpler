@@ -1,11 +1,6 @@
-import { useState } from "react";
-import "./styles.css";
-
-function Dashboard() {
-  const [count, setCount] = useState(0);
-
+const Dashboard = () => {
   return (
-    <div class="container">
+    <div className="container">
       <h1>WealthSimpler</h1>
       <h1>Organization Name</h1>
       <label className="balance-label">Current Balance:</label>
@@ -20,6 +15,6 @@ function Dashboard() {
       <label className="strategy-label">Strategy Threshold:</label>
     </div>
   );
-}
+};
 
 export default Dashboard;

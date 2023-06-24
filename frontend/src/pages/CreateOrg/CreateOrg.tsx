@@ -1,9 +1,7 @@
-// CreateOrg.tsx
-
-import React, { useState } from "react";
+import { useState } from "react";
 import "./CreateOrg.css";
 
-const CreateOrg: React.FC = () => {
+const CreateOrg = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionSelect = (option: string) => {
