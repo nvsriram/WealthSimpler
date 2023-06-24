@@ -1,4 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+
 import "./Login.css";
 
 const Login = () => {
@@ -10,9 +13,12 @@ const Login = () => {
       <div className="form-container">
         <input type="text" placeholder="Email" className="input-field" />
         <input type="password" placeholder="Password" className="input-field" />
-        <button onClick={() => loginWithRedirect()} className="login-button">
+        <AwesomeButton
+          onPress={() => loginWithRedirect()}
+          className="login-button"
+        >
           Login
-        </button>
+        </AwesomeButton>
       </div>
     </div>
   );

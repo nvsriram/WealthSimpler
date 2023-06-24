@@ -1,5 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Users.css";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 const Users = () => {
   const [users, setUsers] = useState([
@@ -17,7 +19,7 @@ const Users = () => {
   const handleAddUser = () => {
     if (newUser.name !== "" && newUser.email !== "" && newUser.phone !== "") {
       setUsers((prevUsers) => [...prevUsers, newUser]);
-      setNewUser({ name: "", email: "", phone: "" });
+      setNewUser({ name: "", email: "", phone: "" }); // Reset newUser state
     }
   };
 
@@ -28,7 +30,7 @@ const Users = () => {
 
   return (
     <div className="container">
-      <h1>Users</h1>
+      <h1>Add Users</h1>
       <div className="scroll-view">
         <ul>
           {users.map((user, index) => (
@@ -58,15 +60,18 @@ const Users = () => {
           value={newUser.phone}
           onChange={(e) => setNewUser({ ...newUser, phone: e.target.value })}
         />
-        <button onClick={handleAddUser}>+</button>
+        <AwesomeButton type="danger" onPress={handleAddUser}>
+          +
+        </AwesomeButton>
       </div>
-      <button
+      <AwesomeButton
+        type="primary"
         className={`submit-button ${users.length === 0 ? "disabled" : ""}`}
-        onClick={handleSubmit}
+        onPress={handleSubmit}
         disabled={users.length === 0}
       >
         Submit
-      </button>
+      </AwesomeButton>
     </div>
   );
 };
