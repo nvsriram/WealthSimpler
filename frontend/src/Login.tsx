@@ -1,15 +1,21 @@
 import React from "react";
+
+import { useAuth0 } from "@auth0/auth0-react";
+
 import "./Login.css";
 
 const Login: React.FC = () => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <div className="login-container">
       <h1>WealthSimpler</h1>
       <div className="form-container">
         <input type="text" placeholder="Email" className="input-field" />
         <input type="password" placeholder="Password" className="input-field" />
-        <button className="login-button">Login</button>
-        <button className="signup-button">Sign Up</button>
+        <button onClick={() => loginWithRedirect()} className="login-button">
+          Login
+        </button>
       </div>
     </div>
   );
