@@ -1,23 +1,24 @@
 import { useState } from "react";
+import "./styles.css";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card bg-slate-200">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <div class="container">
+      <h1>WealthSimpler</h1>
+      <h1>Organization Name</h1>
+      <label className="balance-label">Current Balance:</label>
+      <p className="balance">123456.00</p>
+      <div className="button-container">
+        <button className="button">Send</button>
+        <button className="button">Receive</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <br />
+      <label className="strategy-label">Automatic Strategy:</label>
+      <br />
+      <label className="strategy-label">Strategy Threshold:</label>
+    </div>
   );
 }
 
