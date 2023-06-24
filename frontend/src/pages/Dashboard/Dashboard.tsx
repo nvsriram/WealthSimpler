@@ -1,19 +1,37 @@
+import { useEffect, useState } from "react";
+import "./Dashboard.css";
+
 const Dashboard = () => {
+  const [balance, setBalance] = useState(123456.0);
+  const [strategy, setStrategy] = useState("Invest in ETH");
+  const [threshold, setThreshold] = useState(500);
+
+  useEffect(() => {
+    // fetch data regarding balance, strategy, and threshold
+  }, []);
+
   return (
-    <div className="container">
-      <h1>WealthSimpler</h1>
-      <h1>Organization Name</h1>
-      <label className="balance-label">Current Balance:</label>
-      <p className="balance">123456.00</p>
+    <>
+      <h1 className="org-title">Organization Name</h1>
+      <hr />
+      <div className="balance">
+        <label>Current Balance:</label>
+        <p>${balance.toFixed(2)}</p>
+      </div>
       <div className="button-container">
-        <button className="button">Send</button>
-        <button className="button">Receive</button>
+        <button className="send-button">Send</button>
+        <button className="invest-button">Invest</button>
       </div>
       <br />
-      <label className="strategy-label">Automatic Strategy:</label>
-      <br />
-      <label className="strategy-label">Strategy Threshold:</label>
-    </div>
+      <div className="strategy">
+        <label>Automatic Strategy:</label>
+        <p>{strategy}</p>
+      </div>
+      <div className="strategy">
+        <label>Excess Amount Threshold:</label>
+        <p>{threshold}</p>
+      </div>
+    </>
   );
 };
 

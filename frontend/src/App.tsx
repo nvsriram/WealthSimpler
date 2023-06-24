@@ -1,18 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "./pages/Login/Login";
-import Users from "./pages/Users/Users";
 import "./styles.css";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Navbar from "./components/Navbar";
 
 const App = () => {
-  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   return (
-    <div>
+    <div className="app">
+      <Navbar />
       {isAuthenticated ? (
-        <div>
+        <div className="container">
           <Routes>
-            <Route path="/" element={<Users />}></Route>
+            <Route path="/" element={<Dashboard />}></Route>
           </Routes>
         </div>
       ) : (
