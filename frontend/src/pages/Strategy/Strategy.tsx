@@ -1,10 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Strategy.css";
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
 
 const Strategy = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
-  const handleOptionSelect = (option: string) => {
+  const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
 
@@ -44,13 +46,14 @@ const Strategy = () => {
           High Risk
         </button>
       </div>
-      <button
+      <AwesomeButton
+        type="primary"
         className={`submit-button ${selectedOption === "" ? "disabled" : ""}`}
-        onClick={handleSubmit}
+        onPress={handleSubmit}
         disabled={selectedOption === ""}
       >
         Submit
-      </button>
+      </AwesomeButton>
     </div>
   );
 };
