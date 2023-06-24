@@ -11,8 +11,6 @@
 }
 
 
-/* Rest of the CSS rules... */
-
 
 
 h1 {
@@ -64,6 +62,9 @@ li {
   margin-right: 0.5rem;
   padding: 0.5rem;
   font-size: 1rem;
+  border: 1px solid var(--gray, #8c8c8c);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity value (0.8) as desired */
 }
 
 .add-user-container input[type="tel"] {
