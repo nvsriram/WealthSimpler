@@ -3,8 +3,14 @@ import { AwesomeButton } from "react-awesome-button";
 import { addFieldsToDatabase, getEmailKeys } from "../../middleware/store";
 import { createAccount } from "../../middleware/createAccount";
 import Switch from "react-switch";
+import {
+  SMART_ACCOUNT_ADDRESS,
+  SMART_ACCOUNT_ABI,
+} from "../../contracts/constants";
+import { ethers } from "ethers";
 import "react-awesome-button/dist/styles.css";
 import "./Users.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 type User = {
   name: string;
@@ -20,12 +26,32 @@ const Users = ({
   updateStep: Dispatch<SetStateAction<number>>;
 }) => {
   const [users, setUsers] = useState<User[]>([]);
-
   const [newUser, setNewUser] = useState({
     name: "",
     email: "",
     isSigner: false,
   });
+  const { user } = useAuth0();
+
+  const handleAddSigners = async (signers: string[]) => {
+    if (!user || !user.email) {
+      return;
+    }
+    const provider = ethers.getDefaultProvider();
+    const { privateKey } = await getEmailKeys(user.email);
+    if (!privateKey) {
+      return;
+    }
+    const signer = new ethers.Wallet(privateKey, provider);
+    const contract = new ethers.Contract(
+      SMART_ACCOUNT_ADDRESS,
+      SMART_ACCOUNT_ABI,
+      signer
+    );
+    const tx = await contract.getChainId();
+    // const tx = await contract.addSigners(signers);
+    console.log(tx);
+  };
 
   const handleAddUser = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,6 +65,7 @@ const Users = ({
     // Perform submission logic with users array
     console.log("Submitted users:", users);
 
+    const signers = [];
     for (const user of users) {
       const { publicKey, privateKey } = await getEmailKeys(user.email);
       if (publicKey && privateKey) {
@@ -49,6 +76,9 @@ const Users = ({
           orgName,
           user.isSigner
         );
+        if (user.isSigner) {
+          signers.push(privateKey);
+        }
       } else {
         const [pubKey, privKey] = await createAccount();
         await addFieldsToDatabase(
@@ -58,8 +88,12 @@ const Users = ({
           orgName,
           user.isSigner
         );
+        if (user.isSigner) {
+          signers.push(privKey);
+        }
       }
     }
+    handleAddSigners(signers);
 
     updateStep((prev) => prev + 1);
   };
