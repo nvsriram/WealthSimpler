@@ -7,10 +7,10 @@ export async function createAccount(): Promise<[string, string]> {
     byte.toString(16).padStart(2, "0")
   ).join("");
   const privateKey = "0x" + id;
-  console.log("SAVE BUT DO NOT SHARE THIS:", privateKey);
+  // console.log("SAVE BUT DO NOT SHARE THIS:", privateKey);
 
   const wallet = new ethers.Wallet(privateKey);
-  console.log("Address: " + wallet.address);
+  // console.log("Address: " + wallet.address);
 
   return [wallet.address, privateKey];
 }

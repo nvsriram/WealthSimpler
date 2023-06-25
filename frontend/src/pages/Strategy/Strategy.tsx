@@ -86,10 +86,8 @@ const Strategy = ({
 
   const handleSubmit = () => {
     if (selectedOption !== "") {
-      // Perform submission logic with selectedOption
-      console.log("Selected option:", selectedOption);
+      updateStep((prev) => prev + 1);
     }
-    updateStep((prev) => prev + 1);
   };
 
   return (
@@ -102,7 +100,7 @@ const Strategy = ({
           }`}
           onClick={() => handleOptionSelect("Low")}
         >
-          Transfer to account
+          Transfer to arbitrary account
         </button>
         <button
           className={`strategy-option ${
@@ -110,7 +108,7 @@ const Strategy = ({
           }`}
           onClick={() => handleOptionSelect("Medium")}
         >
-          Invest using Compound
+          Invest using Compound: 0xb98..704
         </button>
         <button
           className={`strategy-option ${
