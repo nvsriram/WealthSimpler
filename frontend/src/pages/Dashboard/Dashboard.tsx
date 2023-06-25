@@ -29,7 +29,7 @@ const Dashboard = ({ org }: { org: string }) => {
       </div>
       <div className="strategy">
         <label>Excess Amount Threshold:</label>
-        <p>{threshold}</p>
+        <p>{threshold.toFixed(2)}</p>
       </div>
     </>
   );
