@@ -29,7 +29,8 @@ export async function addFieldsToDatabase(
   email: string,
   publicKey: string,
   privateKey: string,
-  organization?: string
+  organization?: string,
+  isSigner = false
 ): Promise<void> {
   const hashedEmail = await hashEmail(email);
   if (organization) {
@@ -38,12 +39,14 @@ export async function addFieldsToDatabase(
       publicKey,
       privateKey,
       organization,
+      isSigner,
     });
   } else {
     set(ref(database, `users/${hashedEmail}`), {
       email,
       publicKey,
       privateKey,
+      isSigner,
     });
   }
 }
@@ -71,18 +74,29 @@ export async function getEmailKeys(email: string): Promise<{
   publicKey: string | null;
   privateKey: string | null;
   organization: string | null;
+  isSigner: boolean | null;
 }> {
   const hashedEmail = await hashEmail(email);
   const snapshot = await get(ref(database, `users/${hashedEmail}`));
   const userData = snapshot.val();
   if (userData) {
-    const { publicKey, privateKey } = userData;
+    const { publicKey, privateKey, isSigner } = userData;
     if (userData.organization) {
-      return { publicKey, privateKey, organization: userData.organization };
+      return {
+        publicKey,
+        privateKey,
+        organization: userData.organization,
+        isSigner,
+      };
     }
-    return { publicKey, privateKey, organization: null };
+    return { publicKey, privateKey, organization: null, isSigner };
   } else {
-    return { publicKey: null, privateKey: null, organization: null };
+    return {
+      publicKey: null,
+      privateKey: null,
+      organization: null,
+      isSigner: null,
+    };
   }
 }
 

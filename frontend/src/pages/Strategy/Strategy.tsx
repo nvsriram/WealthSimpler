@@ -32,7 +32,7 @@ const Strategy = ({
           }`}
           onClick={() => handleOptionSelect("Low")}
         >
-          Transfer to Arbitrary account
+          Transfer to account
         </button>
         <button
           className={`strategy-option ${

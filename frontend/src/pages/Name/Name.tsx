@@ -22,7 +22,13 @@ const Name = ({
       setOrg(name);
       const { publicKey, privateKey } = await getEmailKeys(user.email);
       if (publicKey && privateKey) {
-        await addFieldsToDatabase(user.email, publicKey, privateKey, name);
+        await addFieldsToDatabase(
+          user.email,
+          publicKey,
+          privateKey,
+          name,
+          true
+        );
       }
 
       setCurrentStep((prev) => prev + 1);
