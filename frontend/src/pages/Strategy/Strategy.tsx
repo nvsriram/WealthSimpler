@@ -10,7 +10,7 @@ const Strategy = ({
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
-  const handleOptionSelect = (option: any) => {
+  const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
   };
 
@@ -23,7 +23,7 @@ const Strategy = ({
   };
 
   return (
-    <div className="strategy-container">
+    <>
       <h1>Select an Investment Strategy</h1>
       <div className="options-container">
         <button
@@ -53,13 +53,13 @@ const Strategy = ({
       </div>
       <AwesomeButton
         type="primary"
-        className={`submit-button ${selectedOption === "" ? "disabled" : ""}`}
+        className={`form-button ${selectedOption === "" ? "disabled" : ""}`}
         onPress={handleSubmit}
         disabled={selectedOption === ""}
       >
-        Submit
+        Continue
       </AwesomeButton>
-    </div>
+    </>
   );
 };
 
