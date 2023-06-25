@@ -1,7 +1,9 @@
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <h1>WealthSimpler</h1>
+      <h1>
+        WealthSimple<span>r</span>
+      </h1>
     </nav>
   );
 };

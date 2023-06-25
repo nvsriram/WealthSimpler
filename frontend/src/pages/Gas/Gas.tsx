@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import "./Gas.css";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import "./Gas.css";
 
 const Gas = ({
   updateStep,
@@ -23,36 +23,35 @@ const Gas = ({
   };
 
   return (
-    <div className="gas-container">
+    <>
       <h1>Gas</h1>
       <div className="options-container">
-        <div
-          className={`option-square ${
+        <button
+          className={`strategy-option ${
             selectedOption === "Setup Payments" ? "selected" : ""
           }`}
           onClick={() => handleOptionSelect("Setup Payments")}
         >
-          <span>Auto</span>
-        </div>
-        <div
-          className={`option-square ${
+          Auto
+        </button>
+        <button
+          className={`strategy-option ${
             selectedOption === "Strategy" ? "selected" : ""
           }`}
           onClick={() => handleOptionSelect("Strategy")}
         >
-          <span>Strategy</span>
-        </div>
+          Strategy
+        </button>
       </div>
-      {selectedOption !== "" && (
-        <AwesomeButton
-          type="primary"
-          className="next-button"
-          onPress={handleNext}
-        >
-          Next
-        </AwesomeButton>
-      )}
-    </div>
+      <AwesomeButton
+        type="primary"
+        className="form-button"
+        onPress={handleNext}
+        disabled={selectedOption === ""}
+      >
+        Next
+      </AwesomeButton>
+    </>
   );
 };
 
