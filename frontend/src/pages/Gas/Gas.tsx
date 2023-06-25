@@ -40,7 +40,7 @@ const Gas = ({
           }`}
           onClick={() => handleOptionSelect("Strategy")}
         >
-          Strategy
+          Self
         </button>
       </div>
       <AwesomeButton
