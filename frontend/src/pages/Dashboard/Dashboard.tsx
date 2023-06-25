@@ -34,8 +34,7 @@ const query = `query {
   }
 }`;
 
-const MyData = () => {
-  const myRef = useRef();
+const TraderTable = () => {
   const { data, loading, error } = useQuery(query);
   const svgRef = useRef(null);
 
@@ -54,7 +53,12 @@ const MyData = () => {
       .scaleBand()
       .rangeRound([0, width])
       .padding(0.1)
-      .domain(marketplaceStats.map((d) => d.lastTransactionBlockTimestamp));
+      .domain(
+        marketplaceStats.map(
+          (d: { lastTransactionBlockTimestamp: any }) =>
+            d.lastTransactionBlockTimestamp
+        )
+      );
 
     const y = d3
       .scaleLinear()
@@ -105,8 +109,8 @@ const MyData = () => {
 
   return (
     <>
-      <h1>OpenSea Daily Sales Volume in Past Week: </h1>
-      <svg ref={svgRef} className="bar-graph" width={800} height={400}></svg>
+      <h3>OpenSea Daily Sales Volume in Past Week</h3>
+      <svg ref={svgRef} className="bar-graph" width={500} height={500} />
     </>
   );
 };
@@ -149,35 +153,34 @@ const Dashboard = ({ org }: { org: string }) => {
   }, [user]);
 
   return (
-    <div className="dashboard-container">
+    <>
       <h1 className="org-title">{org}</h1>
       <hr />
-      <div className="balance">
-        <label>Current Balance:</label>
-        <p>{(Number(balance) / 1e18).toFixed(2)} MATIC</p>
+      <div className="org-data">
+        <section>
+          <div className="balance">
+            <label>Current Balance:</label>
+            <p>{(Number(balance) / 1e18).toFixed(2)} MATIC</p>
+          </div>
+          <div className="button-container">
+            <button className="send-button">Send</button>
+            <button className="invest-button">Invest</button>
+          </div>
+          <div className="strategy">
+            <label>Automatic Strategy:</label>
+            <p>{strategy}</p>
+          </div>
+          <div className="strategy">
+            <label>Excess Amount Threshold:</label>
+            <p>{threshold.toFixed(2)} USDC</p>
+          </div>
+        </section>
+        <section>
+          <h2>Trader Insights:</h2>
+          <TraderTable />
+        </section>
       </div>
-      <div className="button-container">
-        <button className="send-button">Send</button>
-        <button className="invest-button">Invest</button>
-      </div>
-      <br />
-      <div className="strategy">
-        <label>Automatic Strategy:</label>
-        <p>{strategy}</p>
-      </div>
-      <div className="strategy">
-        <label>Excess Amount Threshold:</label>
-        <p>{threshold.toFixed(2)} USDC</p>
-      </div>
-      <br />
-      <br />
-      <hr />
-      <br />
-      <h1>Trader Insights</h1>
-      <MyData />
-      <br />
-      <br />
-    </div>
+    </>
   );
 };
 
