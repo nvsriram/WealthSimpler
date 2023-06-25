@@ -24,22 +24,6 @@ const Gas = ({
     updateStep((prev) => prev + 1);
   };
 
-  const handleMouseEnterSponsor = () => {
-    setShowSponsorHint(true);
-  };
-
-  const handleMouseLeaveSponsor = () => {
-    setShowSponsorHint(false);
-  };
-
-  const handleMouseEnterSelf = () => {
-    setShowSelfHint(true);
-  };
-
-  const handleMouseLeaveSelf = () => {
-    setShowSelfHint(false);
-  };
-
   return (
     <>
       <h1>Gas</h1>
@@ -49,27 +33,21 @@ const Gas = ({
             selectedOption === "Setup Payments" ? "selected" : ""
           }`}
           onClick={() => handleOptionSelect("Setup Payments")}
-          onMouseEnter={handleMouseEnterSponsor}
-          onMouseLeave={handleMouseLeaveSponsor}
+          onMouseEnter={() => setShowSponsorHint(true)}
+          onMouseLeave={() => setShowSponsorHint(false)}
         >
-          Sponsored
+          {showSponsorHint ? "Use a paymaster" : "Sponsored"}
         </button>
-        {showSponsorHint && (
-          <span className="option-hint">Use a paymaster</span>
-        )}
         <button
           className={`strategy-option ${
             selectedOption === "Strategy" ? "selected" : ""
           }`}
           onClick={() => handleOptionSelect("Strategy")}
-          onMouseEnter={handleMouseEnterSelf}
-          onMouseLeave={handleMouseLeaveSelf}
+          onMouseEnter={() => setShowSelfHint(true)}
+          onMouseLeave={() => setShowSelfHint(false)}
         >
-          Self
+          {showSelfHint ? "Organization manually handles" : "Self"}
         </button>
-        {showSelfHint && (
-          <span className="option-hint">Organization manually handles</span>
-        )}
       </div>
       <AwesomeButton
         type="primary"
