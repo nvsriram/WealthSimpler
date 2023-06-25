@@ -13,28 +13,93 @@ import { useRef } from "react";
 
 init("f0d8871cca3c4712977094057e3b1909");
 
-const query = `query {
-  MarketplaceStats(input: {
-    order: [{lastTransactionBlockTimestamp: DESC}]
-    filter: {
-      dappName: {_eq: opensea}
-      lastTransactionBlockTimestamp: {
-        _gte: "2023-06-18T00:00:00.000Z",
-        _lte: "2023-06-25T00:00:00.000Z"
+const DataTable = () => {
+  const query = `query GetAllPolygonTokenTransfersToday {
+    polygonTransfers: TokenTransfers(
+      input: {
+        filter: {
+          blockTimestamp: {
+            _gte: "2023-06-24T00:00:00.000Z",
+            _lt: "2023-06-25T00:00:00.000Z"
+          }
+        },
+        blockchain: polygon,
+        limit: 10
+      }
+    ) {
+      TokenTransfer {
+        amount
+        blockNumber
+        blockTimestamp
+        from {
+          addresses
+        }
+        to {
+          addresses
+        }
+        tokenAddress
+        transactionHash
+        tokenId
+        tokenType
+        blockchain
       }
     }
-    blockchain: ethereum
-    timeFrame: DAILY
-    limit: 15
-  }) {
-    MarketplaceStat {
-      lastTransactionBlockTimestamp
-      totalSaleVolumeInUSDC
-    }
+  }`;
+  const { data, loading, error } = useQuery(query);
+
+  if (loading) {
+    return <p>Loading...</p>;
   }
-}`;
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  const transfers = data?.polygonTransfers?.TokenTransfer || [];
+
+  return (
+    <table className="data-table">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {transfers.map((transfer: any, index: any) => (
+          <tr key={index}>
+            <td>{transfer.from.addresses[0] as string}</td>
+            <td>{transfer.to.addresses[0]}</td>
+            <td>{transfer.amount}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
 const TraderTable = () => {
+  const query = `query {
+    MarketplaceStats(input: {
+      order: [{lastTransactionBlockTimestamp: DESC}]
+      filter: {
+        dappName: {_eq: opensea}
+        lastTransactionBlockTimestamp: {
+          _gte: "2023-06-18T00:00:00.000Z",
+          _lte: "2023-06-25T00:00:00.000Z"
+        }
+      }
+      blockchain: ethereum
+      timeFrame: DAILY
+      limit: 15
+    }) {
+      MarketplaceStat {
+        lastTransactionBlockTimestamp
+        totalSaleVolumeInUSDC
+      }
+    }
+  }`;
   const { data, loading, error } = useQuery(query);
   const svgRef = useRef(null);
 
@@ -116,6 +181,7 @@ const TraderTable = () => {
 };
 
 const Dashboard = ({ org }: { org: string }) => {
+  const [show, setShow] = useState(false);
   const [balance, setBalance] = useState(BigInt(123456.0 * 10e15));
   const [strategy, setStrategy] = useState("");
   const [threshold, setThreshold] = useState(0);
@@ -180,6 +246,10 @@ const Dashboard = ({ org }: { org: string }) => {
           <TraderTable />
         </section>
       </div>
+      <h2 onClick={() => setShow(!show)} style={{ cursor: "pointer" }}>{`${
+        show ? "Hide" : "View"
+      } Latest Polygon Activity`}</h2>
+      {show && <DataTable />}
     </>
   );
 };

@@ -22,7 +22,8 @@ hr {
   font-family: Lato, sans-serif;
 }
 
-.org-data section h2 {
+h2 {
+  font-family: Lato, sans-serif;
   color: var(--gray, #8c8c8c);
   font-size: 0.875rem; /* 14px */
   line-height: 1.25rem; /* 20px */
@@ -173,4 +174,27 @@ button:focus {
 
 .dashboard-container {
   overflow-y: auto; /* Enable vertical scrolling when the content exceeds the viewport height */
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Lato, sans-serif;
+  background-color: #333333; /* Dark gray background */
+  color: #ffffff; /* White text color */
+  border-radius: 8px;
+  border: none;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.5rem;
+  font-family: Lato, sans-serif;
+}
+
+.data-table th {
+  font-family: Lato, sans-serif;
+  background-color: #666666; /* Dark gray header background */
 }
