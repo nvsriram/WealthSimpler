@@ -16,10 +16,8 @@ const Gas = ({
 
   const handleNext = () => {
     if (selectedOption !== "") {
-      // Perform next logic based on selectedOption
-      console.log("Selected option:", selectedOption);
+      updateStep((prev) => prev + 1);
     }
-    updateStep((prev) => prev + 1);
   };
 
   return (

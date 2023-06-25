@@ -37,20 +37,24 @@ const Users = ({
     if (!user || !user.email) {
       return;
     }
-    const provider = ethers.getDefaultProvider();
     const { privateKey } = await getEmailKeys(user.email);
     if (!privateKey) {
       return;
     }
+
+    const provider = new ethers.JsonRpcProvider(
+      "https://api.stackup.sh/v1/node/99b1b58b60c436a4f651e1fbf784c194d9e84d2b7011eba90a0c12c26302e19f"
+    );
     const signer = new ethers.Wallet(privateKey, provider);
     const contract = new ethers.Contract(
       SMART_ACCOUNT_ADDRESS,
       SMART_ACCOUNT_ABI,
       signer
     );
-    const tx = await contract.getChainId();
-    // const tx = await contract.addSigners(signers);
-    console.log(tx);
+    for (const signer of signers) {
+      const tx = await contract.addSigners(signer);
+      console.log(tx);
+    }
   };
 
   const handleAddUser = (e: FormEvent<HTMLFormElement>) => {
