@@ -3,18 +3,15 @@ import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "./pages/Login/Login";
 import "./styles.css";
-
 import {
   getEmailKeys,
   checkEmailExists,
   addFieldsToDatabase,
 } from "./middleware/store";
-
 import { createAccount } from "./middleware/createAccount";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Navbar from "./components/Navbar";
 import CreateOrg from "./pages/CreateOrg/CreateOrg";
-import { useState } from "react";
 
 const App = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -50,7 +47,7 @@ const App = () => {
     };
 
     handleUserData();
-  }, []);
+  }, [user]);
 
   return (
     <div className="app">
