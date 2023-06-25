@@ -28,7 +28,7 @@ const Name = ({
           <label>Organization Name:</label>
           <input type="text" onChange={(e) => setName(e.target.value)} />
         </div>
-        <AwesomeButton disabled={name == ""} className="login-button">
+        <AwesomeButton disabled={name == ""} className="form-button">
           Continue
         </AwesomeButton>
       </form>

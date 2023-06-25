@@ -11,7 +11,7 @@ const Login = () => {
       <h1>Login in to your organization using Auth0</h1>
       <AwesomeButton
         onPress={() => loginWithRedirect()}
-        className="login-button"
+        className="form-button"
       >
         Login
       </AwesomeButton>
