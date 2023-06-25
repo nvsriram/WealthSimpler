@@ -71,7 +71,7 @@ const Users = ({
       </form>
       <AwesomeButton
         type="primary"
-        className={`submit-button ${users.length === 0 ? "disabled" : ""}`}
+        className={`form-button ${users.length === 0 ? "disabled" : ""}`}
         onPress={handleSubmit}
         disabled={users.length === 0}
       >
