@@ -2,6 +2,7 @@ import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 import "./Users.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 type User = {
   name: string;
@@ -33,6 +34,7 @@ const Users = ({
   const handleSubmit = () => {
     // Perform submission logic with users array
     console.log("Submitted users:", users);
+
     updateStep((prev) => prev + 1);
   };
 
@@ -67,7 +69,7 @@ const Users = ({
           value={newUser.phone}
           onChange={(e) => setNewUser({ ...newUser, phone: e.target.value })}
         />
-        <AwesomeButton type="danger">+</AwesomeButton>
+        <AwesomeButton type="whatsapp">+</AwesomeButton>
       </form>
       <AwesomeButton
         type="primary"

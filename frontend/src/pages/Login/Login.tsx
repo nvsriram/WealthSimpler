@@ -12,6 +12,7 @@ const Login = () => {
       <AwesomeButton
         onPress={() => loginWithRedirect()}
         className="form-button"
+        type="whatsapp"
       >
         Login
       </AwesomeButton>

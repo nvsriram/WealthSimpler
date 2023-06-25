@@ -44,12 +44,12 @@ const Gas = ({
         </button>
       </div>
       <AwesomeButton
-        type="primary"
         className="form-button"
         onPress={handleNext}
         disabled={selectedOption === ""}
+        type="primary"
       >
-        Next
+        Finish
       </AwesomeButton>
     </>
   );
