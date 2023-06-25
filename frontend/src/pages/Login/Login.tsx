@@ -7,17 +7,15 @@ const Login = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <>
-      <div className="login-container">
-        <h1>Login in to your organization using Auth0</h1>
-        <AwesomeButton
-          onPress={() => loginWithRedirect()}
-          className="login-button"
-        >
-          Login
-        </AwesomeButton>
-      </div>
-    </>
+    <div className="login-container">
+      <h1>Login in to your organization using Auth0</h1>
+      <AwesomeButton
+        onPress={() => loginWithRedirect()}
+        className="login-button"
+      >
+        Login
+      </AwesomeButton>
+    </div>
   );
 };
 

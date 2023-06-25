@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "./pages/Login/Login";
@@ -15,11 +14,11 @@ import { createAccount } from "./middleware/createAccount";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Navbar from "./components/Navbar";
 import CreateOrg from "./pages/CreateOrg/CreateOrg";
-import Strategy from "./pages/Strategy/Strategy";
-import Users from "./pages/Users/Users";
-import Gas from "./pages/Gas/Gas";
+import { useState } from "react";
 
 const App = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [name, setName] = useState("Organization Name");
   const { user, isAuthenticated } = useAuth0();
   const [publicKey, setPublicKey] = useState<string | null>(null);
   const [privateKey, setPrivateKey] = useState<string | null>(null);
@@ -59,11 +58,20 @@ const App = () => {
       {isAuthenticated ? (
         <div className="main-container">
           <Routes>
-            <Route path="/" element={<Dashboard />}></Route>
-            <Route path="/new" element={<CreateOrg />}></Route>
-            <Route path="/strategy" element={<Strategy />}></Route>
-            <Route path="/gas" element={<Gas />}></Route>
-            <Route path="/users" element={<Users />}></Route>
+            <Route
+              path="/"
+              element={
+                currentStep >= 4 ? (
+                  <Dashboard org={name} />
+                ) : (
+                  <CreateOrg
+                    setOrg={setName}
+                    currentStep={currentStep}
+                    setCurrentStep={setCurrentStep}
+                  />
+                )
+              }
+            />
           </Routes>
         </div>
       ) : (

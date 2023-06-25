@@ -1,0 +1,14 @@
+h1 {
+  margin-bottom: 2rem;
+}
+
+.org-name-form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: Lato, sans-serif;
+  gap: 2rem;
+}

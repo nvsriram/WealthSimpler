@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Dashboard.css";
 
-const Dashboard = () => {
+const Dashboard = ({ org }: { org: string }) => {
   const [balance, setBalance] = useState(123456.0);
   const [strategy, setStrategy] = useState("Invest in ETH");
   const [threshold, setThreshold] = useState(500);
@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1 className="org-title">Organization Name</h1>
+      <h1 className="org-title">{org}</h1>
       <hr />
       <div className="balance">
         <label>Current Balance:</label>

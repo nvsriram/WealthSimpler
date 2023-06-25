@@ -1,62 +1,59 @@
-import { useState } from "react";
-import "./CreateOrg.css";
+import { Dispatch, SetStateAction } from "react";
+import { Stepper, Step } from "react-form-stepper";
+import Name from "../Name/Name";
+import Strategy from "../Strategy/Strategy";
+import Gas from "../Gas/Gas";
+import Users from "../Users/Users";
 
-const CreateOrg = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-
-  const handleOptionSelect = (option: string) => {
-    setSelectedOption(option);
-  };
-
-  const handleCreateOrg = () => {
-    if (selectedOption !== "") {
-      // Perform create organization logic
-      console.log(
-        "Creating organization with selected option:",
-        selectedOption
-      );
-    }
-  };
-
+const CreateOrg = ({
+  currentStep,
+  setCurrentStep,
+  setOrg,
+}: {
+  currentStep: number;
+  setCurrentStep: Dispatch<SetStateAction<number>>;
+  setOrg: Dispatch<SetStateAction<string>>;
+}) => {
   return (
     <>
-      <h1>New Organization</h1>
-      <input type="text" />
-      {/* <div className="scroll-view">
-        <div
-          className={`option ${
-            selectedOption === "Option 1" ? "selected" : ""
-          }`}
-          onClick={() => handleOptionSelect("Option 1")}
-        >
-          Option 1
-        </div>
-        <div
-          className={`option ${
-            selectedOption === "Option 2" ? "selected" : ""
-          }`}
-          onClick={() => handleOptionSelect("Option 2")}
-        >
-          Option 2
-        </div>
-        <div
-          className={`option ${
-            selectedOption === "Option 3" ? "selected" : ""
-          }`}
-          onClick={() => handleOptionSelect("Option 3")}
-        >
-          Option 3
-        </div>
-      </div> */}
-      <button
-        className={`create-org-button ${
-          selectedOption === "" ? "disabled" : ""
-        }`}
-        onClick={handleCreateOrg}
-        disabled={selectedOption === ""}
+      <Stepper
+        activeStep={currentStep}
+        connectorStateColors={true}
+        stepClassName="steps"
+        styleConfig={{
+          activeBgColor: "#047857",
+          activeTextColor: "#fff",
+          completedBgColor: "#10b981",
+          completedTextColor: "#fff",
+          inactiveBgColor: "#8c8c8c",
+          inactiveTextColor: "#fff",
+          size: "2rem",
+          circleFontSize: "1.125rem",
+          labelFontSize: "0.1rem",
+          borderRadius: "30%",
+          fontWeight: 500,
+        }}
+        connectorStyleConfig={{
+          activeColor: "#047857",
+          completedColor: "#10b981",
+          disabledColor: "#8c8c8c",
+          size: 1,
+          stepSize: "1.5rem",
+          style: "solid",
+        }}
       >
-        Create
-      </button>
+        <Step />
+        <Step />
+        <Step />
+        <Step />
+      </Stepper>
+
+      {currentStep === 0 && (
+        <Name setOrg={setOrg} setCurrentStep={setCurrentStep} />
+      )}
+      {currentStep === 1 && <Users updateStep={setCurrentStep} />}
+      {currentStep === 2 && <Strategy updateStep={setCurrentStep} />}
+      {currentStep === 3 && <Gas updateStep={setCurrentStep} />}
     </>
   );
 };
