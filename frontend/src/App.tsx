@@ -1,25 +1,42 @@
-import { useState } from "react";
+import { useEffect } from "react";
+
+import { Route, Routes } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import Login from "./pages/Login/Login";
 import "./styles.css";
 
-function App() {
-  const [count, setCount] = useState(0);
+import { createAccount } from "./middleware/createAccount";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Navbar from "./components/Navbar";
+import CreateOrg from "./pages/CreateOrg/CreateOrg";
+import Strategy from "./pages/Strategy/Strategy";
+import Users from "./pages/Users/Users";
+import Gas from "./pages/Gas/Gas";
+
+const App = () => {
+  const { user, isAuthenticated } = useAuth0();
+
+  console.log("User", user);
+  console.log(createAccount());
 
   return (
-    <div class="container">
-      <h1>WealthSimpler</h1>
-      <h1>Organization Name</h1>
-      <label className="balance-label">Current Balance:</label>
-      <p className="balance">123456.00</p>
-      <div className="button-container">
-        <button className="button">Send</button>
-        <button className="button">Receive</button>
-      </div>
-      <br />
-      <label className="strategy-label">Automatic Strategy:</label>
-      <br />
-      <label className="strategy-label">Strategy Threshold:</label>
+    <div className="app">
+      <Navbar />
+      {isAuthenticated ? (
+        <div className="main-container">
+          <Routes>
+            <Route path="/" element={<Dashboard />}></Route>
+            <Route path="/new" element={<CreateOrg />}></Route>
+            <Route path="/strategy" element={<Strategy />}></Route>
+            <Route path="/gas" element={<Gas />}></Route>
+            <Route path="/users" element={<Users />}></Route>
+          </Routes>
+        </div>
+      ) : (
+        <Login />
+      )}
     </div>
   );
-}
+};
 
 export default App;

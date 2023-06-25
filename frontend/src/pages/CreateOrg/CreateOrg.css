@@ -1,0 +1,72 @@
+h1 {
+  color: var(--light, #f1f1f1);
+  font-size: 2.25rem;
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  line-height: 120%;
+  margin-bottom: 2rem;
+}
+
+.scroll-view {
+  width: 20rem;
+  max-height: 10rem;
+  overflow-y: scroll;
+  padding: 1rem;
+  border: 1px solid var(--gray, #8c8c8c);
+  border-radius: 4px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  background-color: var(--gray, #8c8c8c);
+  color: var(--light, #f1f1f1);
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.option.selected {
+  background-color: var(--purple, #9142ff);
+}
+
+.create-org-button {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 24px;
+  background-color: var(--purple, #9142ff);
+  color: var(--light, #f1f1f1);
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.create-org-button.disabled {
+  background-color: var(--gray, #8c8c8c);
+  cursor: not-allowed;
+}
+
+input {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--gray, #8c8c8c);
+  border-radius: 4px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Adjust the opacity value (0.8) as desired */
+}
+
+input[type="tel"] {
+  width: 10rem;
+}
