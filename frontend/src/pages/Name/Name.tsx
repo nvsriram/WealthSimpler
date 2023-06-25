@@ -1,5 +1,6 @@
 import { useState, FormEvent, Dispatch, SetStateAction } from "react";
 import { AwesomeButton } from "react-awesome-button";
+import "./Name.css";
 
 const Name = ({
   setOrg,
