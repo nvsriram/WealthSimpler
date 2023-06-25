@@ -93,3 +93,27 @@ h1 {
   font-family: Lato, sans-serif;
   font-weight: 700;
 }
+
+form div label {
+  color: var(--gray, #8c8c8c);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  font-weight: 500;
+  padding-right: 2rem;
+}
+
+input {
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  border: 1px solid var(--gray, #8c8c8c);
+  border-radius: 4px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Adjust the opacity value (0.8) as desired */
+  outline: none;
+}

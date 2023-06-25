@@ -1,5 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import "./CreateOrg.css";
+import { Dispatch, SetStateAction } from "react";
 import { Stepper, Step } from "react-form-stepper";
 import Name from "../Name/Name";
 import Strategy from "../Strategy/Strategy";
