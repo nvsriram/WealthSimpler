@@ -21,3 +21,29 @@
 .strategy-option.selected {
   background-color: #047857;
 }
+
+
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Lato, sans-serif;
+  background-color: #333333; /* Dark gray background */
+  color: #ffffff; /* White text color */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px;
+  font-family: Lato, sans-serif;
+  border: 1px solid #ffffff;
+}
+
+.data-table th {
+  font-family: Lato, sans-serif;
+  background-color: #666666; /* Dark gray header background */
+}
+
