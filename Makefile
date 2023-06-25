@@ -47,4 +47,5 @@ deploy:
 
 forge script script/DeployAccount.s.sol:DeployAccount --chain-id 80001 --rpc-url https://polygon-mumbai.g.alchemy.com/v2/04tse8PDxpdM3_iZOSA-YH-WMuljjoGe \
     --etherscan-api-key371RACR4UC3GDP96RAHRHXXCXX1Y3F81YM --verifier-url https://api.polygonscan.com/api \
+	--private-key $(PRIVATE_KEY)
     --broadcast --verify -vvvv

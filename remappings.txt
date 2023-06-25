@@ -1,0 +1,3 @@
+@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/
+@biconomy/contracts/=lib/scw-contracts/contracts/smart-contract-wallet/
+forge-std/=lib/forge-std/src/
