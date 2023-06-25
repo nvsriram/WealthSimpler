@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import "./Strategy.css";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
-const Strategy = () => {
+const Strategy = ({
+  updateStep,
+}: {
+  updateStep: Dispatch<SetStateAction<number>>;
+}) => {
   const [selectedOption, setSelectedOption] = useState("");
 
-  const handleOptionSelect = (option) => {
+  const handleOptionSelect = (option: any) => {
     setSelectedOption(option);
   };
 
@@ -15,6 +19,7 @@ const Strategy = () => {
       // Perform submission logic with selectedOption
       console.log("Selected option:", selectedOption);
     }
+    updateStep((prev) => prev + 1);
   };
 
   return (
