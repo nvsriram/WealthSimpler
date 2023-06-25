@@ -68,6 +68,7 @@ const App = () => {
                   <Dashboard org={name} />
                 ) : (
                   <CreateOrg
+                    org={name}
                     setOrg={setName}
                     currentStep={currentStep}
                     setCurrentStep={setCurrentStep}

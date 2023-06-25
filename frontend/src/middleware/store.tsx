@@ -32,12 +32,20 @@ export async function addFieldsToDatabase(
   organization?: string
 ): Promise<void> {
   const hashedEmail = await hashEmail(email);
-  set(ref(database, `users/${hashedEmail}`), {
-    email,
-    publicKey,
-    privateKey,
-    organization,
-  });
+  if (organization) {
+    set(ref(database, `users/${hashedEmail}`), {
+      email,
+      publicKey,
+      privateKey,
+      organization,
+    });
+  } else {
+    set(ref(database, `users/${hashedEmail}`), {
+      email,
+      publicKey,
+      privateKey,
+    });
+  }
 }
 
 async function hashEmail(email: string) {
@@ -59,9 +67,7 @@ export async function checkEmailExists(email: string): Promise<boolean> {
 }
 
 // Function to get publicKey and privateKey from the database
-export async function getEmailKeys(
-  email: string
-): Promise<{
+export async function getEmailKeys(email: string): Promise<{
   publicKey: string | null;
   privateKey: string | null;
   organization: string | null;

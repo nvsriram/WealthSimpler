@@ -7,12 +7,14 @@ import Users from "../Users/Users";
 
 const CreateOrg = ({
   currentStep,
+  org,
   setCurrentStep,
   setOrg,
 }: {
   currentStep: number;
-  setCurrentStep: Dispatch<SetStateAction<number>>;
+  org: string;
   setOrg: Dispatch<SetStateAction<string>>;
+  setCurrentStep: Dispatch<SetStateAction<number>>;
 }) => {
   return (
     <>
@@ -51,7 +53,7 @@ const CreateOrg = ({
       {currentStep === 0 && (
         <Name setOrg={setOrg} setCurrentStep={setCurrentStep} />
       )}
-      {currentStep === 1 && <Users updateStep={setCurrentStep} />}
+      {currentStep === 1 && <Users orgName={org} updateStep={setCurrentStep} />}
       {currentStep === 2 && <Strategy updateStep={setCurrentStep} />}
       {currentStep === 3 && <Gas updateStep={setCurrentStep} />}
     </>
