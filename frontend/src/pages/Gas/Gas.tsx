@@ -36,7 +36,7 @@ const Gas = ({
           onMouseEnter={() => setShowSponsorHint(true)}
           onMouseLeave={() => setShowSponsorHint(false)}
         >
-          {showSponsorHint ? "Use a paymaster" : "Sponsored"}
+          {showSponsorHint ? "Use a Paymaster" : "Sponsored"}
         </button>
         <button
           className={`strategy-option ${
@@ -46,7 +46,7 @@ const Gas = ({
           onMouseEnter={() => setShowSelfHint(true)}
           onMouseLeave={() => setShowSelfHint(false)}
         >
-          {showSelfHint ? "Organization manually handles" : "Self"}
+          {showSelfHint ? "Handle by Organization" : "Self"}
         </button>
       </div>
       <AwesomeButton
