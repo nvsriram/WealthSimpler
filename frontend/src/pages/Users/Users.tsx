@@ -1,8 +1,9 @@
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { AwesomeButton } from "react-awesome-button";
+import { addFieldsToDatabase, getEmailKeys } from "../../middleware/store";
+import { createAccount } from "../../middleware/createAccount";
 import "react-awesome-button/dist/styles.css";
 import "./Users.css";
-import { useAuth0 } from "@auth0/auth0-react";
 
 type User = {
   name: string;
@@ -11,8 +12,10 @@ type User = {
 };
 
 const Users = ({
+  orgName,
   updateStep,
 }: {
+  orgName: string;
   updateStep: Dispatch<SetStateAction<number>>;
 }) => {
   const [users, setUsers] = useState<User[]>([]);
@@ -31,9 +34,19 @@ const Users = ({
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Perform submission logic with users array
     console.log("Submitted users:", users);
+
+    for (const user of users) {
+      const { publicKey, privateKey } = await getEmailKeys(user.email);
+      if (publicKey && privateKey) {
+        await addFieldsToDatabase(user.email, publicKey, privateKey, orgName);
+      } else {
+        const [pubKey, privKey] = await createAccount();
+        await addFieldsToDatabase(user.email, pubKey, privKey, orgName);
+      }
+    }
 
     updateStep((prev) => prev + 1);
   };
