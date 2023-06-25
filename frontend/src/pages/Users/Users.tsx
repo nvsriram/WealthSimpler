@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import "./Users.css";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
-const Users = () => {
+const Users = ({
+  updateStep,
+}: {
+  updateStep: Dispatch<SetStateAction<number>>;
+}) => {
   const [users, setUsers] = useState([
     { name: "John Doe", email: "john@example.com", phone: "1234567890" },
     { name: "Jane Smith", email: "jane@example.com", phone: "9876543210" },
@@ -26,6 +30,7 @@ const Users = () => {
   const handleSubmit = () => {
     // Perform submission logic with users array
     console.log("Submitted users:", users);
+    updateStep((prev) => prev + 1);
   };
 
   return (
