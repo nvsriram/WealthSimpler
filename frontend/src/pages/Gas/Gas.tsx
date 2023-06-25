@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import "./Gas.css";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
-const Gas = () => {
+const Gas = ({
+  updateStep,
+}: {
+  updateStep: Dispatch<SetStateAction<number>>;
+}) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleOptionSelect = (option: string) => {
@@ -15,6 +19,7 @@ const Gas = () => {
       // Perform next logic based on selectedOption
       console.log("Selected option:", selectedOption);
     }
+    updateStep((prev) => prev + 1);
   };
 
   return (
