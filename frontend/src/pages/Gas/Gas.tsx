@@ -9,8 +9,6 @@ const Gas = ({
   updateStep: Dispatch<SetStateAction<number>>;
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
-  const [showSponsorHint, setShowSponsorHint] = useState(false);
-  const [showSelfHint, setShowSelfHint] = useState(false);
 
   const handleOptionSelect = (option: string) => {
     setSelectedOption(option);
@@ -29,24 +27,22 @@ const Gas = ({
       <h1>Gas</h1>
       <div className="options-container">
         <button
+          title="Use a paymaster"
           className={`strategy-option ${
             selectedOption === "Setup Payments" ? "selected" : ""
           }`}
           onClick={() => handleOptionSelect("Setup Payments")}
-          onMouseEnter={() => setShowSponsorHint(true)}
-          onMouseLeave={() => setShowSponsorHint(false)}
         >
-          {showSponsorHint ? "Use a Paymaster" : "Sponsored"}
+          Sponsored
         </button>
         <button
+          title="Handle by Organization"
           className={`strategy-option ${
             selectedOption === "Strategy" ? "selected" : ""
           }`}
           onClick={() => handleOptionSelect("Strategy")}
-          onMouseEnter={() => setShowSelfHint(true)}
-          onMouseLeave={() => setShowSelfHint(false)}
         >
-          {showSelfHint ? "Handle by Organization" : "Self"}
+          Self
         </button>
       </div>
       <AwesomeButton
