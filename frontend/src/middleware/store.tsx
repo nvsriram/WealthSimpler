@@ -28,14 +28,27 @@ const database = getDatabase(app);
 export async function addFieldsToDatabase(
   email: string,
   publicKey: string,
-  privateKey: string
+  privateKey: string,
+  organization?: string,
+  isSigner = false
 ): Promise<void> {
   const hashedEmail = await hashEmail(email);
-  set(ref(database, `users/${hashedEmail}`), {
-    email,
-    publicKey,
-    privateKey,
-  });
+  if (organization) {
+    set(ref(database, `users/${hashedEmail}`), {
+      email,
+      publicKey,
+      privateKey,
+      organization,
+      isSigner,
+    });
+  } else {
+    set(ref(database, `users/${hashedEmail}`), {
+      email,
+      publicKey,
+      privateKey,
+      isSigner,
+    });
+  }
 }
 
 async function hashEmail(email: string) {
@@ -57,17 +70,33 @@ export async function checkEmailExists(email: string): Promise<boolean> {
 }
 
 // Function to get publicKey and privateKey from the database
-export async function getEmailKeys(
-  email: string
-): Promise<{ publicKey: string | null; privateKey: string | null }> {
+export async function getEmailKeys(email: string): Promise<{
+  publicKey: string | null;
+  privateKey: string | null;
+  organization: string | null;
+  isSigner: boolean | null;
+}> {
   const hashedEmail = await hashEmail(email);
   const snapshot = await get(ref(database, `users/${hashedEmail}`));
   const userData = snapshot.val();
   if (userData) {
-    const { publicKey, privateKey } = userData;
-    return { publicKey, privateKey };
+    const { publicKey, privateKey, isSigner } = userData;
+    if (userData.organization) {
+      return {
+        publicKey,
+        privateKey,
+        organization: userData.organization,
+        isSigner,
+      };
+    }
+    return { publicKey, privateKey, organization: null, isSigner };
   } else {
-    return { publicKey: null, privateKey: null };
+    return {
+      publicKey: null,
+      privateKey: null,
+      organization: null,
+      isSigner: null,
+    };
   }
 }
 

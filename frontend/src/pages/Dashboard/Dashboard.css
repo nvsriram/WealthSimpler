@@ -1,8 +1,6 @@
 .org-title {
-  width: 100%;
   margin: 0;
   margin-bottom: 1rem;
-  color: var(--gray, #8c8c8c);
 }
 
 hr {

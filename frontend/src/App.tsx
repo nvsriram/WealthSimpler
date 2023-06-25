@@ -15,7 +15,7 @@ import CreateOrg from "./pages/CreateOrg/CreateOrg";
 
 const App = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [name, setName] = useState("Organization Name");
+  const [name, setName] = useState("");
   const { user, isAuthenticated } = useAuth0();
   const [publicKey, setPublicKey] = useState<string | null>(null);
   const [privateKey, setPrivateKey] = useState<string | null>(null);
@@ -29,11 +29,17 @@ const App = () => {
         try {
           const emailExists = await checkEmailExists(user.email);
           if (emailExists) {
-            const { publicKey, privateKey } = await getEmailKeys(user.email);
+            const { publicKey, privateKey, organization } = await getEmailKeys(
+              user.email
+            );
             console.log("pubKey", publicKey);
             console.log("priKey", privateKey);
             setPublicKey(publicKey);
             setPrivateKey(privateKey);
+            if (organization) {
+              setCurrentStep(4);
+              setName(organization);
+            }
           } else {
             const [pubKey, privKey] = await createAccount();
             setPublicKey(pubKey);
@@ -62,6 +68,7 @@ const App = () => {
                   <Dashboard org={name} />
                 ) : (
                   <CreateOrg
+                    org={name}
                     setOrg={setName}
                     currentStep={currentStep}
                     setCurrentStep={setCurrentStep}

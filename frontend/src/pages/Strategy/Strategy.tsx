@@ -32,7 +32,7 @@ const Strategy = ({
           }`}
           onClick={() => handleOptionSelect("Low")}
         >
-          Low Risk
+          Transfer to account
         </button>
         <button
           className={`strategy-option ${
@@ -40,7 +40,7 @@ const Strategy = ({
           }`}
           onClick={() => handleOptionSelect("Medium")}
         >
-          Medium Risk
+          Invest using Compound
         </button>
         <button
           className={`strategy-option ${
@@ -48,7 +48,7 @@ const Strategy = ({
           }`}
           onClick={() => handleOptionSelect("High")}
         >
-          High Risk
+          Staking pools
         </button>
       </div>
       <AwesomeButton

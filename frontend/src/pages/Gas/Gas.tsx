@@ -27,29 +27,31 @@ const Gas = ({
       <h1>Gas</h1>
       <div className="options-container">
         <button
+          title="Use a paymaster"
           className={`strategy-option ${
             selectedOption === "Setup Payments" ? "selected" : ""
           }`}
           onClick={() => handleOptionSelect("Setup Payments")}
         >
-          Auto
+          Sponsored
         </button>
         <button
+          title="Handle by Organization"
           className={`strategy-option ${
             selectedOption === "Strategy" ? "selected" : ""
           }`}
           onClick={() => handleOptionSelect("Strategy")}
         >
-          Strategy
+          Self
         </button>
       </div>
       <AwesomeButton
-        type="primary"
         className="form-button"
         onPress={handleNext}
         disabled={selectedOption === ""}
+        type="primary"
       >
-        Next
+        Finish
       </AwesomeButton>
     </>
   );
