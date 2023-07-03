@@ -34,7 +34,7 @@ What truly sets WealthSimpler apart from its peers is its exceptional capability
 
 ## 📄 Links
 
-[Presentation Link](https://docs.google.com/presentation/d/1vv1t0Sr8N5y_BnS0R7LlXhStO6bTAHws7uV6VjKxWoM/edit#slide=id.g2252182b62b_1_189)
+[Presentation Link](https://docs.google.com/presentation/d/1vv1t0Sr8N5y_BnS0R7LlXhStO6bTAHws7uV6VjKxWoM/edit#slide=id.g2252182b62b_1_748)
 
 ## 🧑‍💻 Instructions for running locally
 
